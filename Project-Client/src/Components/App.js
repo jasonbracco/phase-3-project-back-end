@@ -6,6 +6,18 @@ import ShoeForm from "./ShoeForm"
 import Homepage from "./Homepage"
 
 function App() {
+
+  const [shoes, setShoes]=useState([])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/shoes")
+    .then(response => response.json())
+    .then((shoe) => setShoes(shoe))
+},[])
+
+console.log(shoes)
+
+
   return (
     <div>
       <NavBar />
