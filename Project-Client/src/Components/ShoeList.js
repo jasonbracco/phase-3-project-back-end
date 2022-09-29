@@ -1,11 +1,15 @@
 import React from "react";
+import ShoeCard from"./ShoeCard"
 import "../index.css"
 
-function ShoeList(){
+
+function ShoeList({shoes}){
  
     return(
         <div className="shoe_collection">
-            <h1> yo </h1>
+            {shoes.map((shoe) => {
+                return <ShoeCard key={shoe.id} shoe={shoe} />
+            })}
         </div>
     )
 }

@@ -15,9 +15,6 @@ function App() {
     .then((shoe) => setShoes(shoe))
 },[])
 
-console.log(shoes)
-
-
   return (
     <div>
       <NavBar />
@@ -31,7 +28,7 @@ console.log(shoes)
         <Route
           path="/shoelist"
           element={
-            <ShoeList/>
+            <ShoeList shoes={shoes}/>
           }
         />
       <Route
