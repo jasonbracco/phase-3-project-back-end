@@ -1,6 +1,5 @@
 
 puts "Creating Brands ... "
-
 air_jordan=Brand.create(brand_name: "Air Jordan")
 adidas=Brand.create(brand_name: "Adidas")
 nike=Brand.create(brand_name: "Nike")
