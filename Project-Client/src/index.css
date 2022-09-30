@@ -25,6 +25,11 @@
   background: #fafafa;
 }
 
+.edit_button{
+  padding: 1px;
+}
+
 .searchtext{
   height:15px
 }
+
