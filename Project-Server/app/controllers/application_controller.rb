@@ -9,7 +9,7 @@ class ApplicationController < Sinatra::Base
 
   patch '/shoes/:id' do 
     shoe=Shoe.find(params[:id])
-    message.update(
+    shoe.update(
       nickname: params[:nickname]
       size: params[:size]
       color: params[:color]
