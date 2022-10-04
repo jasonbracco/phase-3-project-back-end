@@ -15,6 +15,17 @@ function App() {
     .then((shoe) => setShoes(shoe))
 },[])
 
+function handleUpdateShoeList(updatedShoe) {
+  const updatedShoeList = shoes.map((shoe) => {
+    if (shoe.id === updatedShoe.id) {
+      return updatedShoe;
+    } else {
+      return shoe;
+    }
+  });
+  setShoes(updatedShoeList);
+}
+
   return (
     <div>
       <NavBar />
@@ -28,7 +39,7 @@ function App() {
         <Route
           path="/shoelist"
           element={
-            <ShoeList shoes={shoes}/>
+            <ShoeList shoes={shoes} onUpdateShoe={handleUpdateShoeList}/>
           }
         />
       <Route
