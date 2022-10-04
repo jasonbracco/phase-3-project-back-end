@@ -10,10 +10,10 @@ class ApplicationController < Sinatra::Base
   patch '/shoes/:id' do 
     shoe=Shoe.find(params[:id])
     shoe.update(
-      nickname: params[:nickname]
-      size: params[:size]
-      color: params[:color]
-      price: params[:price]
+      nickname: params[:nickname],
+      size: params[:size],
+      color: params[:color],
+      price: params[:price],
       image_url: params[:image_url] 
     )
     shoe.to_json
