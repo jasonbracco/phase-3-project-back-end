@@ -13,7 +13,7 @@ function App() {
     fetch("http://localhost:9292/shoes")
     .then(response => response.json())
     .then((shoe) => setShoes(shoe))
-  },[])
+  },[shoes])
 
   function handleUpdateShoeList(updatedShoe) {
     const updatedShoeList = shoes.map((shoe) => {

@@ -23,7 +23,7 @@ function ShoeForm({onAddShoe}){
         size: size,
         color: color,
         price: price,
-        image: image
+        image_url: image
       }),
     })
       .then(response => response.json())
