@@ -26,6 +26,10 @@ function App() {
     setShoes(updatedShoeList);
   }
 
+  function handleAddShoe(newShoe) {
+    setShoes([...shoes, newShoe])
+  }
+
   return (
     <div>
       <NavBar />
@@ -45,7 +49,7 @@ function App() {
       <Route
           path="/addshoe"
           element={
-            <ShoeForm/>
+            <ShoeForm onAddShoe={handleAddShoe}/>
           }
         />
       </Routes>

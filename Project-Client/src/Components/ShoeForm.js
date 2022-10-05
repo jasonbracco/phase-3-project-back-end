@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 
-function ShoeForm(){
+function ShoeForm({onAddShoe}){
 
   const [nickname, setNickname] = useState("")
   const [size, setSize] = useState("")
@@ -10,13 +10,36 @@ function ShoeForm(){
   const [image, setImage] = useState("")
 
 
-  function handleAddShoe(event){
+  function handleShoeSubmit(event){
     event.preventDefault()
+
+    fetch("http://localhost:9292/addshoe", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        niciname: nickname,
+        size: size,
+        color: color,
+        price: price,
+        image: image
+      }),
+    })
+      .then(response => response.json())
+      .then((newShoe) => {
+        onAddShoe(newShoe);
+        setNickname("");
+        setSize("");
+        setColor("");
+        setPrice("");
+        setImage("");
+      })
   }
 
     return(
         <div className="new_shoe_form">
-        <form className="add_shoe_form" onSubmit={handleAddShoe}>
+        <form className="add_shoe_form" onSubmit={handleShoeSubmit}>
           <h3>Add a shoe to your collection!</h3>
           <input
             type="text"
@@ -62,6 +85,8 @@ function ShoeForm(){
             placeholder="Image URL"
             className="input-text"
           />
+          <br />
+          <button type="submit">Add Shoe!</button>
         </form>
       </div>
     );
