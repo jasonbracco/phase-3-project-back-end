@@ -15,14 +15,14 @@ function ShoeForm(){
   }
 
     return(
-        <div className="new_player_form">
-        <form className="add_player_form" onSubmit={handleAddShoe}>
-          <h3>Create a player!</h3>
+        <div className="new_shoe_form">
+        <form className="add_shoe_form" onSubmit={handleAddShoe}>
+          <h3>Add a shoe to your collection!</h3>
           <input
             type="text"
             name="nickname"
-            value
-            onChange
+            value={nickname}
+            onChange={(event) => setNickname(event.target.value)}
             placeholder="Nickname"
             className="input-text"
           />
@@ -30,8 +30,8 @@ function ShoeForm(){
           <input
             type="text"
             name="size"
-            value
-            onChange
+            value={size}
+            onChange={(event) => setSize(event.target.value)}
             placeholder="Size"
             className="input-text"
           />
@@ -39,8 +39,8 @@ function ShoeForm(){
           <input
             type="text"
             name="color"
-            value
-            onChange
+            value={color}
+            onChange={(event) => setColor(event.target.value)}
             placeholder="Color"
             className="input-text"
           />
@@ -48,8 +48,8 @@ function ShoeForm(){
           <input
             type="text"
             name="price"
-            value
-            onChange
+            value={price}
+            onChange={(event) => setPrice(event.target.value)}
             placeholder="Price"
             className="input-text"
           />
@@ -57,8 +57,8 @@ function ShoeForm(){
           <input
             type="text"
             name="image"
-            value
-            onChange
+            value={image}
+            onChange={(event) => setImage(event.target.value)}
             placeholder="Image URL"
             className="input-text"
           />
