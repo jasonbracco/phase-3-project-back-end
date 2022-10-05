@@ -30,7 +30,7 @@ class ApplicationController < Sinatra::Base
     shoe.to_json
   end
 
-  delete '/shoes:id' do 
+  delete '/shoes/:id' do 
     shoe=Shoe.find(params[:id])
     shoe.destroy
     shoe.to_json
