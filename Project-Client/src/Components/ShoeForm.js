@@ -1,64 +1,56 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 
 function ShoeForm(){
 
+  const [nickname, setNickname] = useState("")
+  const [size, setSize] = useState("")
+  const [color, setColor] = useState("")
+  const [price, setPrice] = useState("")
+  const [image, setImage] = useState("")
+
+
+  function handleAddShoe(event){
+    event.preventDefault()
+  }
 
     return(
         <div className="new_player_form">
-        <form className="add_player_form" onSubmit>
+        <form className="add_player_form" onSubmit={handleAddShoe}>
           <h3>Create a player!</h3>
           <input
             type="text"
-            name="first name"
+            name="nickname"
             value
             onChange
-            placeholder="First Name"
+            placeholder="Nickname"
             className="input-text"
           />
           <br />
           <input
             type="text"
-            name="last name"
+            name="size"
             value
             onChange
-            placeholder="Last Name"
+            placeholder="Size"
             className="input-text"
           />
           <br />
           <input
             type="text"
-            name="position"
+            name="color"
             value
             onChange
-            placeholder="Position"
+            placeholder="Color"
             className="input-text"
           />
           <br />
           <input
             type="text"
-            name="number"
+            name="price"
             value
             onChange
-            placeholder="Number"
-            className="input-text"
-          />
-          <br />
-          <input
-            type="text"
-            name="bats"
-            value
-            onChange
-            placeholder="Bats"
-            className="input-text"
-          />
-          <br />
-          <input
-            type="text"
-            name="throws"
-            value
-            onChange
-            placeholder="Throws"
+            placeholder="Price"
             className="input-text"
           />
           <br />
@@ -69,13 +61,6 @@ function ShoeForm(){
             onChange
             placeholder="Image URL"
             className="input-text"
-          />
-          <br />
-          <input
-            type="submit"
-            name="submit"
-            value="Create"
-            className="submit"
           />
         </form>
       </div>
