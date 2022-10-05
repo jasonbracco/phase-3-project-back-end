@@ -19,7 +19,7 @@ function ShoeForm({onAddShoe}){
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
-        niciname: nickname,
+        nickname: nickname,
         size: size,
         color: color,
         price: price,
