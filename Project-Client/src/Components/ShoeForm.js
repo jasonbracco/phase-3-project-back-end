@@ -13,7 +13,7 @@ function ShoeForm({onAddShoe}){
   function handleShoeSubmit(event){
     event.preventDefault()
 
-    fetch("http://localhost:9292/addshoe", {
+    fetch("http://localhost:9292/shoes", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

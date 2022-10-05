@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
     shoe.to_json
   end
 
-  post '/shoes/addshoe' do 
+  post '/shoes' do 
     newShoe=Shoe.create(
       nickname: params[:nickname],
       size: params[:size],
