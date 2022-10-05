@@ -13,18 +13,18 @@ function App() {
     fetch("http://localhost:9292/shoes")
     .then(response => response.json())
     .then((shoe) => setShoes(shoe))
-},[])
+  },[])
 
-function handleUpdateShoeList(updatedShoe) {
-  const updatedShoeList = shoes.map((shoe) => {
-    if (shoe.id === updatedShoe.id) {
-      return updatedShoe;
-    } else {
-      return shoe;
-    }
-  });
-  setShoes(updatedShoeList);
-}
+  function handleUpdateShoeList(updatedShoe) {
+    const updatedShoeList = shoes.map((shoe) => {
+      if (shoe.id === updatedShoe.id) {
+        return updatedShoe;
+      } else {
+        return shoe;
+      }
+    });
+    setShoes(updatedShoeList);
+  }
 
   return (
     <div>
@@ -39,7 +39,7 @@ function handleUpdateShoeList(updatedShoe) {
         <Route
           path="/shoelist"
           element={
-            <ShoeList shoes={shoes} onUpdateShoe={handleUpdateShoeList}/>
+            <ShoeList shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
           }
         />
       <Route
