@@ -30,6 +30,11 @@ function App() {
     setShoes([...shoes, newShoe])
   }
 
+  function handleDeleteShoe(id) {
+    const updatedShoeList = shoes.filter((shoe) => shoe.id !== id);
+    setShoes(updatedShoeList);
+  }
+
   return (
     <div>
       <NavBar />
@@ -43,7 +48,7 @@ function App() {
         <Route
           path="/shoelist"
           element={
-            <ShoeList shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
+            <ShoeList onShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
           }
         />
       <Route
