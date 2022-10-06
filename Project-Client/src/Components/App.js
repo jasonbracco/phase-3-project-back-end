@@ -9,11 +9,18 @@ import SortShoes from "./SortShoes"
 function App() {
 
   const [shoes, setShoes]=useState([])
+  const [brands, setBrands]=UseState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/shoes")
     .then(response => response.json())
     .then((shoe) => setShoes(shoe))
+  },[])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/brands")
+    .then(response => response.json())
+    .then((brand) => setBrands(brand))
   },[])
 
   function handleUpdateShoeList(updatedShoe) {
