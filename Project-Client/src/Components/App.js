@@ -22,7 +22,6 @@ function App() {
     .then(response => response.json())
     .then((brand) => setBrands(brand))
   },[])
-  console.log(brands)
 
   function handleUpdateShoeList(updatedShoe) {
     const updatedShoeList = shoes.map((shoe) => {
@@ -57,7 +56,7 @@ function App() {
         <Route
           path="/shoelist"
           element={
-            <ShoeList brands={brands} onShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
+            <ShoeListonShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
           }
         />
         <Route
@@ -69,7 +68,7 @@ function App() {
         <Route
           path="/listbybrand"
           element={
-            <SortShoes shoes={shoes}/>
+            <SortShoes shoes={shoes} brands={brands}/>
           }
         />
       </Routes>
