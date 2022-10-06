@@ -86,6 +86,14 @@ function ShoeForm({onAddShoe}){
             className="input-text"
           />
           <br />
+          <select>
+            <option value="Brand">Brand</option>
+          </select>
+          <br />
+          <select>
+            <option value="function">Function</option>
+          </select>
+          <br />
           <button type="submit">Add Shoe!</button>
         </form>
       </div>
