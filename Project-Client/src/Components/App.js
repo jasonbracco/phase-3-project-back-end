@@ -4,6 +4,7 @@ import NavBar from "./NavBar"
 import ShoeList from "./ShoeList"
 import ShoeForm from "./ShoeForm"
 import Homepage from "./Homepage"
+import SortShoes from "./SortShoes"
 
 function App() {
 
@@ -59,6 +60,9 @@ function App() {
         />
         <Route
           path="/listbybrand"
+          element={
+            <SortShoes shoes={shoes}/>
+          }
         />
       </Routes>
     </div> 
