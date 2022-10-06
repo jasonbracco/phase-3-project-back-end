@@ -36,6 +36,13 @@ function NavBar() {
           >
               Create a Shoe
           </NavLink>
+          <NavLink
+              to="/listbybrand"
+              style={linkStyles}
+              background= "darkblue"  
+          >
+              Sort your Shoes
+          </NavLink>
       </div>
     );
   }

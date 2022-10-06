@@ -3,7 +3,7 @@ class ApplicationController < Sinatra::Base
   
   # Add your routes here
   get "/shoes" do
-    shoes=Shoe.all 
+    shoes=Shoe.all
     shoes.to_json
   end
 

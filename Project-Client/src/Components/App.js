@@ -51,11 +51,14 @@ function App() {
             <ShoeList onShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
           }
         />
-      <Route
+        <Route
           path="/addshoe"
           element={
             <ShoeForm onAddShoe={handleAddShoe}/>
           }
+        />
+        <Route
+          path="/listbybrand"
         />
       </Routes>
     </div> 
