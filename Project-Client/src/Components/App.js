@@ -9,7 +9,7 @@ import SortShoes from "./SortShoes"
 function App() {
 
   const [shoes, setShoes]=useState([])
-  const [brands, setBrands]=UseState([])
+  const [brands, setBrands]=useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/shoes")
@@ -22,6 +22,7 @@ function App() {
     .then(response => response.json())
     .then((brand) => setBrands(brand))
   },[])
+  console.log(brands)
 
   function handleUpdateShoeList(updatedShoe) {
     const updatedShoeList = shoes.map((shoe) => {
@@ -56,7 +57,7 @@ function App() {
         <Route
           path="/shoelist"
           element={
-            <ShoeList onShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
+            <ShoeList brands={brands} onShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
           }
         />
         <Route

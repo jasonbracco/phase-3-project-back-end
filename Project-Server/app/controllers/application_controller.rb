@@ -7,7 +7,7 @@ class ApplicationController < Sinatra::Base
     shoes.to_json
   end
 
-  patch '/shoes/:id' do 
+  patch "/shoes/:id" do 
     shoe=Shoe.find(params[:id])
     shoe.update(
       nickname: params[:nickname],
@@ -19,7 +19,7 @@ class ApplicationController < Sinatra::Base
     shoe.to_json
   end
 
-  post '/shoes' do 
+  post "/shoes" do 
     shoe=Shoe.create(
       nickname: params[:nickname],
       size: params[:size],
@@ -30,10 +30,15 @@ class ApplicationController < Sinatra::Base
     shoe.to_json
   end
 
-  delete '/shoes/:id' do 
+  delete "/shoes/:id" do 
     shoe=Shoe.find(params[:id])
     shoe.destroy
     shoe.to_json
+  end
+
+  get "/brands" do 
+    brands=Brand.all
+    brands.to_json
   end
 
 end
