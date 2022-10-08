@@ -6,7 +6,7 @@ class CreateShoes < ActiveRecord::Migration[6.1]
         t.string :color
         t.integer :price
         t.integer :size
-        t.integer :function_id
+        t.string :use
         t.string :image_url
         t.timestamps
       end
