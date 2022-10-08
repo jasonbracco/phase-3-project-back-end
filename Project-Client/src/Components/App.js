@@ -9,7 +9,6 @@ function App() {
 
   const [shoes, setShoes]=useState([])
   const [brands, setBrands]=useState([])
-  const [functions, setFunctions]=useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/shoes")
@@ -22,14 +21,6 @@ function App() {
     .then(response => response.json())
     .then((brand) => setBrands(brand))
   },[])
-
-  useEffect(() => {
-    fetch("http://localhost:9292/functions")
-    .then(response => response.json())
-    .then((use) => setFunctions(use))
-  },[])
-
-  console.log(functions)
 
   function handleUpdateShoeList(updatedShoe) {
     const updatedShoeList = shoes.map((shoe) => {
@@ -70,7 +61,7 @@ function App() {
         <Route
           path="/addshoe"
           element={
-            <ShoeForm onAddShoe={handleAddShoe} brands={brands} functions={functions}/>
+            <ShoeForm onAddShoe={handleAddShoe} brands={brands}/>
           }
         />
       </Routes>
