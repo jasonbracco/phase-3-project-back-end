@@ -2,7 +2,7 @@ import React, {useState} from 'react'
 import Select from 'react-select';
 
 
-function ShoeForm({onAddShoe, brands}){
+function ShoeForm({onAddShoe, brands, onAddBrand}){
 
   const [nickname, setNickname] = useState("")
   const [size, setSize] = useState("")
@@ -12,14 +12,32 @@ function ShoeForm({onAddShoe, brands}){
   const [use, setUse] = useState("")
   const [newBrand, setNewBrand]=useState("")
 
-  function onBrandSelection(event){
-    console.log(event.target.value)
-  }
+  function handleBrandSubmit(event){
+    event.preventDefault()
+    if (newBrand == ""){
+      console.log("yo")}
+    else{
+      fetch(`http://localhost:9292/brands`,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        brand_name: newBrand
+      }),
+    })
+      .then(response => response.json())
+      .then((brand) => {
+        onAddBrand(brand);
+        setNewBrand("");
+      })
+  } 
+}
 
   function handleShoeSubmit(event){
     event.preventDefault()
 
-    fetch("http://localhost:9292/shoes", {
+    fetch(`http://localhost:9292/shoes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,16 +66,18 @@ function ShoeForm({onAddShoe, brands}){
     return(
       <div>
         <div className="brand_select">
-        <form className="brand_form">
+        <form className="brand_form" onSubmit={handleBrandSubmit}>
           <h3>Add a shoe to your collection!</h3>
           <p>First, select the brand for your new shoe, or create a new one:</p>
-          Brand: <select>
+          Brand: 
+            <select>
               <option>Select</option>
               {brands.map((brand) => (
                 <option key={brand.id} value={brand.id}>{brand.brand_name}</option>
               ))}
             </select>
             <br />
+            Create new brand:
             <input
               type="text"
               name="new_brand"
@@ -72,6 +92,7 @@ function ShoeForm({onAddShoe, brands}){
 
         </div>
         <br />
+        Now, put in the attributes:
         <br />
         <br />
         <div className="new_shoe_form">

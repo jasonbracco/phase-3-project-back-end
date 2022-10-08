@@ -49,4 +49,11 @@ class ApplicationController < Sinatra::Base
     functions.to_json
   end
 
+  post "/brands" do 
+    brand=Brand.create(
+      brand_name: params[:newBrand],
+    )
+    brand.to_json
+  end
+
 end

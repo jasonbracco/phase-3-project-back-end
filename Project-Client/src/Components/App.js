@@ -22,6 +22,8 @@ function App() {
     .then((brand) => setBrands(brand))
   },[])
 
+  console.log(brands)
+
   function handleUpdateShoeList(updatedShoe) {
     const updatedShoeList = shoes.map((shoe) => {
       if (shoe.id === updatedShoe.id) {
@@ -33,8 +35,12 @@ function App() {
     setShoes(updatedShoeList);
   }
 
-  function handleAddShoe(newShoe) {
+  function handleAddShoe(newShoe){
     setShoes([...shoes, newShoe])
+  }
+
+  function handleAddBrand(brand){
+    setBrands([...brands, brand])
   }
 
   function handleDeleteShoe(id) {
@@ -61,7 +67,7 @@ function App() {
         <Route
           path="/addshoe"
           element={
-            <ShoeForm onAddShoe={handleAddShoe} brands={brands}/>
+            <ShoeForm onAddShoe={handleAddShoe} brands={brands} onAddBrand={handleAddBrand}/>
           }
         />
       </Routes>
