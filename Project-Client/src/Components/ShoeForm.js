@@ -10,7 +10,7 @@ function ShoeForm({onAddShoe, brands}){
   const [price, setPrice] = useState("")
   const [image, setImage] = useState("")
   const [use, setUse] = useState("")
-  console.log(brands)
+  const [newBrand, setNewBrand]=useState("")
 
   function onBrandSelection(event){
     console.log(event.target.value)
@@ -45,21 +45,35 @@ function ShoeForm({onAddShoe, brands}){
       })
     }
 
-
     return(
       <div>
         <div className="brand_select">
+        <form className="brand_form">
           <h3>Add a shoe to your collection!</h3>
-          <p>Select the brand for your new shoe, or create a new one:</p>
-          Brand: <select onChange={onBrandSelection}>
+          <p>First, select the brand for your new shoe, or create a new one:</p>
+          Brand: <select>
               <option>Select</option>
               {brands.map((brand) => (
                 <option key={brand.id} value={brand.id}>{brand.brand_name}</option>
               ))}
             </select>
+            <br />
+            <input
+              type="text"
+              name="new_brand"
+              value={newBrand}
+              onChange={(event) => setNewBrand(event.target.value)}
+              placeholder="New Brand"
+              className="input-text"
+            />
+            <br />
+          <button type="submit">Add/Create Brand</button>
+        </form>
 
         </div>
-
+        <br />
+        <br />
+        <br />
         <div className="new_shoe_form">
           <form className="add_shoe_form" onSubmit={handleShoeSubmit}>
             <input
