@@ -4,12 +4,12 @@ import NavBar from "./NavBar"
 import ShoeList from "./ShoeList"
 import ShoeForm from "./ShoeForm"
 import Homepage from "./Homepage"
-import SortShoes from "./SortShoes"
 
 function App() {
 
   const [shoes, setShoes]=useState([])
   const [brands, setBrands]=useState([])
+  const [functions, setFunctions]=useState([])
 
   useEffect(() => {
     fetch("http://localhost:9292/shoes")
@@ -22,6 +22,14 @@ function App() {
     .then(response => response.json())
     .then((brand) => setBrands(brand))
   },[])
+
+  useEffect(() => {
+    fetch("http://localhost:9292/functions")
+    .then(response => response.json())
+    .then((use) => setFunctions(use))
+  },[])
+
+  console.log(functions)
 
   function handleUpdateShoeList(updatedShoe) {
     const updatedShoeList = shoes.map((shoe) => {
@@ -56,19 +64,13 @@ function App() {
         <Route
           path="/shoelist"
           element={
-            <ShoeListonShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
+            <ShoeList onShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
           }
         />
         <Route
           path="/addshoe"
           element={
-            <ShoeForm onAddShoe={handleAddShoe}/>
-          }
-        />
-        <Route
-          path="/listbybrand"
-          element={
-            <SortShoes shoes={shoes} brands={brands}/>
+            <ShoeForm onAddShoe={handleAddShoe} brands={brands} functions={functions}/>
           }
         />
       </Routes>

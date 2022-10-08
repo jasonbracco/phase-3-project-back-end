@@ -1,7 +1,7 @@
 import React, {useState} from 'react'
 
 
-function ShoeForm({onAddShoe}){
+function ShoeForm({onAddShoe, functions, brands}){
 
   const [nickname, setNickname] = useState("")
   const [size, setSize] = useState("")
@@ -86,12 +86,16 @@ function ShoeForm({onAddShoe}){
             className="input-text"
           />
           <br />
-          <select>
-            <option value="Brand">Brand</option>
+          Brand: <select>
+            {brands.map((brand) => (
+              <option key={brand.id} value="Brand">{brand.brand_name}</option>
+            ))}
           </select>
           <br />
-          <select>
-            <option value="function">Function</option>
+          Function: <select>
+          {functions.map((use) => (
+              <option key={use.id}value="Function">{use.function}</option>
+            ))}
           </select>
           <br />
           <button type="submit">Add Shoe!</button>

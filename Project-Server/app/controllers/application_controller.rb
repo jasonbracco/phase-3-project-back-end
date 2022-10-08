@@ -1,3 +1,5 @@
+require 'pry'
+
 class ApplicationController < Sinatra::Base
   set :default_content_type, 'application/json'
   
@@ -20,6 +22,7 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/shoes" do 
+    binding.pry
     shoe=Shoe.create(
       nickname: params[:nickname],
       size: params[:size],
@@ -39,6 +42,11 @@ class ApplicationController < Sinatra::Base
   get "/brands" do 
     brands=Brand.all
     brands.to_json
+  end
+
+  get "/functions" do 
+    functions=Function.all
+    functions.to_json
   end
 
 end
