@@ -38,8 +38,6 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
   function handleShoeSubmit(event){
     event.preventDefault()
 
-    console.log(brandID)
-
     fetch(`http://localhost:9292/brands/${brandID}/shoes`, {
       method: "POST",
       headers: {
@@ -71,30 +69,29 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
     return(
       <div>
         <div className="brand_select">
-        <form className="brand_form" onSubmit={handleBrandSubmit}>
-          <h3>Add a shoe to your collection!</h3>
-          <p>First, select the brand for your new shoe, or create a new one:</p>
-          Brand: 
-            <select onChange={(event) => setBrandID(event.target.value)}>
-              <option>Select</option>
-              {brands.map((brand) => (
-                <option key={brand.id} value={brand.id}>{brand.brand_name}</option>
-              ))}
-            </select>
-            <br />
-            Create new brand:
-            <input
-              type="text"
-              name="new_brand"
-              value={newBrand}
-              onChange={(event) => setNewBrand(event.target.value)}
-              placeholder="New Brand"
-              className="input-text"
-            />
-            <br />
-          <button type="submit">Add/Create Brand</button>
-        </form>
-
+          <form className="brand_form" onSubmit={handleBrandSubmit}>
+            <h3>Add a shoe to your collection!</h3>
+            <p>First, select the brand for your new shoe, or create a new one:</p>
+            Brand: 
+              <select onChange={(event) => setBrandID(event.target.value)}>
+                <option>Select</option>
+                  {brands.map((brand) => (
+                    <option key={brand.id} value={brand.id}>{brand.brand_name}</option>
+                  ))}
+              </select>
+              <br />
+              Create new brand:
+              <input
+                type="text"
+                name="new_brand"
+                value={newBrand}
+                onChange={(event) => setNewBrand(event.target.value)}
+                placeholder="New Brand"
+                className="input-text"
+              />
+              <br />
+            <button type="submit">Add/Create Brand</button>
+          </form>
         </div>
         <br />
         Now, put in the attributes:
@@ -156,11 +153,6 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
               className="input-text"
             />
             <br />
-            {/* Brand: <select>
-              {brands.map((brand) => (
-                <option key={brand.id} value="Brand">{brand.brand_name}</option>
-              ))}
-            </select> */}
             <br />
             <button type="submit">Add Shoe!</button>
           </form>
