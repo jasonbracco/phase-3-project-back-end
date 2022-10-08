@@ -16,7 +16,7 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
   function handleBrandSubmit(event){
     event.preventDefault()
     if (newBrand == ""){
-      console.log("yo")}
+      console.log("Nothing New!")}
     else{
       fetch(`http://localhost:9292/brands`,{
       method: "POST",
