@@ -8,6 +8,7 @@ function ShoeForm({onAddShoe, brands}){
   const [color, setColor] = useState("")
   const [price, setPrice] = useState("")
   const [image, setImage] = useState("")
+  const [use, setUse] = useState("")
 
 
   function handleShoeSubmit(event){
@@ -23,7 +24,8 @@ function ShoeForm({onAddShoe, brands}){
         size: size,
         color: color,
         price: price,
-        image_url: image
+        image_url: image,
+        use: use
       }),
     })
       .then(response => response.json())
@@ -34,66 +36,83 @@ function ShoeForm({onAddShoe, brands}){
         setColor("");
         setPrice("");
         setImage("");
+        setUse("");
       })
-  }
+    }
+
 
     return(
-        <div className="new_shoe_form">
-        <form className="add_shoe_form" onSubmit={handleShoeSubmit}>
+      <div>
+        <div className="brand_select">
           <h3>Add a shoe to your collection!</h3>
-          <input
-            type="text"
-            name="nickname"
-            value={nickname}
-            onChange={(event) => setNickname(event.target.value)}
-            placeholder="Nickname"
-            className="input-text"
-          />
-          <br />
-          <input
-            type="text"
-            name="size"
-            value={size}
-            onChange={(event) => setSize(event.target.value)}
-            placeholder="Size"
-            className="input-text"
-          />
-          <br />
-          <input
-            type="text"
-            name="color"
-            value={color}
-            onChange={(event) => setColor(event.target.value)}
-            placeholder="Color"
-            className="input-text"
-          />
-          <br />
-          <input
-            type="text"
-            name="price"
-            value={price}
-            onChange={(event) => setPrice(event.target.value)}
-            placeholder="Price"
-            className="input-text"
-          />
-          <br />
-          <input
-            type="text"
-            name="image"
-            value={image}
-            onChange={(event) => setImage(event.target.value)}
-            placeholder="Image URL"
-            className="input-text"
-          />
-          <br />
-          Brand: <select>
-            {brands.map((brand) => (
-              <option key={brand.id} value="Brand">{brand.brand_name}</option>
-            ))}
-          </select>
-          <br />
-          <button type="submit">Add Shoe!</button>
-        </form>
+          <p>Select the brand for your new shoe, or create a new one:</p>
+        </div>
+
+        <div className="new_shoe_form">
+          <form className="add_shoe_form" onSubmit={handleShoeSubmit}>
+            <input
+              type="text"
+              name="nickname"
+              value={nickname}
+              onChange={(event) => setNickname(event.target.value)}
+              placeholder="Nickname"
+              className="input-text"
+            />
+            <br />
+            <input
+              type="text"
+              name="size"
+              value={size}
+              onChange={(event) => setSize(event.target.value)}
+              placeholder="Size"
+              className="input-text"
+            />
+            <br />
+            <input
+              type="text"
+              name="color"
+              value={color}
+              onChange={(event) => setColor(event.target.value)}
+              placeholder="Color"
+              className="input-text"
+            />
+            <br />
+            <input
+              type="text"
+              name="price"
+              value={price}
+              onChange={(event) => setPrice(event.target.value)}
+              placeholder="Price"
+              className="input-text"
+            />
+            <br />
+            <input
+              type="text"
+              name="image"
+              value={image}
+              onChange={(event) => setImage(event.target.value)}
+              placeholder="Image URL"
+              className="input-text"
+            />
+            <br />
+            <input
+              type="text"
+              name="use"
+              value={use}
+              onChange={(event) => setUse(event.target.value)}
+              placeholder="Use"
+              className="input-text"
+            />
+            <br />
+            Brand: <select>
+              {brands.map((brand) => (
+                <option key={brand.id} value="Brand">{brand.brand_name}</option>
+              ))}
+            </select>
+            <br />
+            <button type="submit">Add Shoe!</button>
+          </form>
+        </div>
       </div>
     );
 }

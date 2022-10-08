@@ -22,13 +22,13 @@ class ApplicationController < Sinatra::Base
   end
 
   post "/shoes" do 
-    binding.pry
     shoe=Shoe.create(
       nickname: params[:nickname],
       size: params[:size],
       color: params[:color],
       price: params[:price],
-      image_url: params[:image_url]
+      image_url: params[:image_url],
+      use: params[:use]
     )
     shoe.to_json
   end
