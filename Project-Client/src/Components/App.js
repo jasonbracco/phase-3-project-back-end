@@ -4,6 +4,7 @@ import NavBar from "./NavBar"
 import ShoeList from "./ShoeList"
 import ShoeForm from "./ShoeForm"
 import Homepage from "./Homepage"
+import BrandList from "./BrandList"
 
 function App() {
 
@@ -66,6 +67,12 @@ function App() {
           path="/addshoe"
           element={
             <ShoeForm onAddShoe={handleAddShoe} brands={brands} onAddBrand={handleAddBrand}/>
+          }
+        />
+        <Route
+          path="/brandlist"
+          element={
+            <BrandList brands={brands}/>
           }
         />
       </Routes>
