@@ -37,6 +37,7 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
 
   function handleShoeSubmit(event){
     event.preventDefault()
+
     console.log(brandID)
 
     fetch(`http://localhost:9292/brands/${brandID}/shoes`, {
