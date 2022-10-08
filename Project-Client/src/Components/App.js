@@ -47,6 +47,11 @@ function App() {
     setShoes(updatedShoeList);
   }
 
+  function handleDeleteBrand(id) {
+    const updatedBrandList = brands.filter((brand) => brand.id !== id);
+    setBrands(updatedBrandList);
+  }
+
   return (
     <div>
       <NavBar />
@@ -72,7 +77,7 @@ function App() {
         <Route
           path="/brandlist"
           element={
-            <BrandList brands={brands}/>
+            <BrandList brands={brands} onBrandDelete={handleDeleteBrand}/>
           }
         />
       </Routes>
