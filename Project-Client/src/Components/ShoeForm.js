@@ -35,18 +35,18 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
   } 
 }
 
-console.log(brandID)
-
   function handleShoeSubmit(event){
     event.preventDefault()
+    console.log(brandID)
 
-    fetch(`http://localhost:9292/shoes`, {
+    fetch(`http://localhost:9292/brands/${brandID}/shoes`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
       body: JSON.stringify({
         nickname: nickname,
+        brand_id: brandID,
         size: size,
         color: color,
         price: price,
@@ -57,6 +57,7 @@ console.log(brandID)
       .then(response => response.json())
       .then((newShoe) => {
         onAddShoe(newShoe);
+        setBrandID();
         setNickname("");
         setSize("");
         setColor("");
