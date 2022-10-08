@@ -1,4 +1,5 @@
 import React, {useState} from 'react'
+import Select from 'react-select';
 
 
 function ShoeForm({onAddShoe, brands}){
@@ -9,7 +10,11 @@ function ShoeForm({onAddShoe, brands}){
   const [price, setPrice] = useState("")
   const [image, setImage] = useState("")
   const [use, setUse] = useState("")
+  console.log(brands)
 
+  function onBrandSelection(event){
+    console.log(event.target.value)
+  }
 
   function handleShoeSubmit(event){
     event.preventDefault()
@@ -46,6 +51,13 @@ function ShoeForm({onAddShoe, brands}){
         <div className="brand_select">
           <h3>Add a shoe to your collection!</h3>
           <p>Select the brand for your new shoe, or create a new one:</p>
+          Brand: <select onChange={onBrandSelection}>
+              <option>Select</option>
+              {brands.map((brand) => (
+                <option key={brand.id} value={brand.id}>{brand.brand_name}</option>
+              ))}
+            </select>
+
         </div>
 
         <div className="new_shoe_form">
@@ -104,11 +116,11 @@ function ShoeForm({onAddShoe, brands}){
               className="input-text"
             />
             <br />
-            Brand: <select>
+            {/* Brand: <select>
               {brands.map((brand) => (
                 <option key={brand.id} value="Brand">{brand.brand_name}</option>
               ))}
-            </select>
+            </select> */}
             <br />
             <button type="submit">Add Shoe!</button>
           </form>
