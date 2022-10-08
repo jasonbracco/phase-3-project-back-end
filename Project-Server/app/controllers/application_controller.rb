@@ -58,8 +58,8 @@ class ApplicationController < Sinatra::Base
   end
 
   delete "/brands/:id" do 
-    brand=Brand.find(params[:id])
-    brand.destroy
+    brands=Brand.find(params[:id])
+    brands.destroy
     shoe.to_json
   end
 
