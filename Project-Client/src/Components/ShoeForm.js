@@ -11,6 +11,7 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
   const [image, setImage] = useState("")
   const [use, setUse] = useState("")
   const [newBrand, setNewBrand]=useState("")
+  const [brandID, setBrandID]=useState()
 
   function handleBrandSubmit(event){
     event.preventDefault()
@@ -33,6 +34,8 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
       })
   } 
 }
+
+console.log(brandID)
 
   function handleShoeSubmit(event){
     event.preventDefault()
@@ -70,7 +73,7 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
           <h3>Add a shoe to your collection!</h3>
           <p>First, select the brand for your new shoe, or create a new one:</p>
           Brand: 
-            <select>
+            <select onChange={(event) => setBrandID(event.target.value)}>
               <option>Select</option>
               {brands.map((brand) => (
                 <option key={brand.id} value={brand.id}>{brand.brand_name}</option>

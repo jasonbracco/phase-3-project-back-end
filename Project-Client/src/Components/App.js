@@ -22,8 +22,6 @@ function App() {
     .then((brand) => setBrands(brand))
   },[])
 
-  console.log(brands)
-
   function handleUpdateShoeList(updatedShoe) {
     const updatedShoeList = shoes.map((shoe) => {
       if (shoe.id === updatedShoe.id) {
