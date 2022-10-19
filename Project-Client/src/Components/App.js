@@ -4,7 +4,6 @@ import NavBar from "./NavBar"
 import ShoeList from "./ShoeList"
 import ShoeForm from "./ShoeForm"
 import Homepage from "./Homepage"
-import BrandList from "./BrandList"
 
 function App() {
 
@@ -16,7 +15,7 @@ function App() {
     .then(response => response.json())
     .then((shoe) => setShoes(shoe))
   },[])
-  console.log(shoes)
+
 
   useEffect(() => {
     fetch("http://localhost:9292/brands")
@@ -48,11 +47,6 @@ function App() {
     setShoes(updatedShoeList);
   }
 
-  function handleDeleteBrand(id) {
-    const updatedBrandList = brands.filter((brand) => brand.id !== id);
-    setBrands(updatedBrandList);
-  }
-
   return (
     <div>
       <NavBar />
@@ -73,12 +67,6 @@ function App() {
           path="/addshoe"
           element={
             <ShoeForm onAddShoe={handleAddShoe} brands={brands} onAddBrand={handleAddBrand}/>
-          }
-        />
-        <Route
-          path="/brandlist"
-          element={
-            <BrandList brands={brands} onBrandDelete={handleDeleteBrand}/>
           }
         />
       </Routes>
