@@ -16,6 +16,7 @@ function App() {
     .then(response => response.json())
     .then((shoe) => setShoes(shoe))
   },[])
+  console.log(shoes)
 
   useEffect(() => {
     fetch("http://localhost:9292/brands")

@@ -6,7 +6,7 @@ class ApplicationController < Sinatra::Base
   # Add your routes here
   get "/shoes" do
     shoes=Shoe.all
-    shoes.to_json
+    shoes.to_json(include: {brand: {only: [:brand_name]}})
   end
 
   patch "/shoes/:id" do 
