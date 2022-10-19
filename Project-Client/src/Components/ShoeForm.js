@@ -1,5 +1,4 @@
 import React, {useState} from 'react'
-import Select from 'react-select';
 
 
 function ShoeForm({onAddShoe, brands, onAddBrand}){
@@ -15,7 +14,7 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
 
   function handleBrandSubmit(event){
     event.preventDefault()
-    if (newBrand == ""){
+    if (newBrand === ""){
       console.log("Nothing New!")}
     else{
       fetch(`http://localhost:9292/brands`,{
