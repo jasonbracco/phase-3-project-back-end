@@ -9,13 +9,14 @@ function App() {
 
   const [shoes, setShoes]=useState([])
   const [brands, setBrands]=useState([])
+  console.log(shoes)
+  console.log(brands)
 
   useEffect(() => {
     fetch("http://localhost:9292/shoes")
     .then(response => response.json())
     .then((shoe) => setShoes(shoe))
   },[])
-
 
   useEffect(() => {
     fetch("http://localhost:9292/brands")
@@ -60,7 +61,7 @@ function App() {
         <Route
           path="/shoelist"
           element={
-            <ShoeList onShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
+            <ShoeList brands={brands} onShoeDelete={handleDeleteShoe} shoes={shoes} shoeUpdate={handleUpdateShoeList}/>
           }
         />
         <Route

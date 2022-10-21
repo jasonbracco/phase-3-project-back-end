@@ -18,7 +18,7 @@ class ApplicationController < Sinatra::Base
       price: params[:price],
       image_url: params[:image_url] 
     )
-    shoe.to_json
+    shoe.to_json(include: {brand: {only: [:brand_name]}})
   end
 
   post "/brands/:id/shoes" do 
@@ -31,7 +31,7 @@ class ApplicationController < Sinatra::Base
       image_url: params[:image_url],
       use: params[:use]
     )
-    shoe.to_json
+    shoe.to_json(include: {brand: {only: [:brand_name]}})
   end
 
   delete "/shoes/:id" do 
@@ -45,24 +45,11 @@ class ApplicationController < Sinatra::Base
     brands.to_json
   end
 
-  get "/functions" do 
-    functions=Function.all
-    functions.to_json
-  end
-
   post "/brands" do 
     brand=Brand.create(
       brand_name: params[:brand_name],
     )
     brand.to_json
   end
-
-  delete "/brands/:id" do 
-    brands=Brand.find(params[:id])
-    brands.destroy
-    shoe.to_json
-  end
-
-  
 
 end
