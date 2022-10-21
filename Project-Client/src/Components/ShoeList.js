@@ -4,7 +4,7 @@ import "../index.css"
 
 
 function ShoeList({shoes, shoeUpdate, onShoeDelete, brands}){
-    console.log(shoes)
+
     return(
         <div className="shoe_collection">
             {shoes.map((shoe) => {

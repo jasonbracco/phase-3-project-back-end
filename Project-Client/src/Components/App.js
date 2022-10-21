@@ -9,8 +9,6 @@ function App() {
 
   const [shoes, setShoes]=useState([])
   const [brands, setBrands]=useState([])
-  console.log(shoes)
-  console.log(brands)
 
   useEffect(() => {
     fetch("http://localhost:9292/shoes")

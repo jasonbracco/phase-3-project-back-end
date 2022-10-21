@@ -11,7 +11,6 @@ function ShoeForm({onAddShoe, brands, onAddBrand}){
   const [use, setUse] = useState("")
   const [newBrand, setNewBrand]=useState("")
   const [brandID, setBrandID]=useState()
-  console.log(brands)
 
   function handleBrandSubmit(event){
     event.preventDefault()
